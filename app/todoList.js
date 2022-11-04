@@ -2,7 +2,9 @@ import { wait } from "../utils/wait"
 import Todo from "./todo"
 
 const getTodos = async () => {
-  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`, {
+    cache: "no-store",
+  })
   const data = await response.json()
   await wait(1)
   return data
