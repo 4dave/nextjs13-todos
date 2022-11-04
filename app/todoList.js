@@ -1,6 +1,10 @@
+import { wait } from "../utils/wait"
+import Todo from "./todo"
+
 const getTodos = async () => {
-  const response = await fetch(`${process.env.API_URL}/todos`)
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`)
   const data = await response.json()
+  await wait(1)
   return data
 }
 
@@ -13,9 +17,7 @@ export default async function TodoList() {
         {data.map((todo) => {
           return (
             <li key={todo.ID}>
-              <input type="checkbox" />
-              {todo.name}
-              <button>Delete</button>
+              <Todo todo={todo} />
             </li>
           )
         })}
