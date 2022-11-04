@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import "../styles/todos.css"
 
 async function create(name, refresh) {
   await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`, {
@@ -16,11 +17,11 @@ export default function AddTodo() {
   let [name, setName] = useState("")
 
   return (
-    <div>
+    <div className="addtodo">
       <input
         type="text"
         onChange={(e) => setName(e.target.value)}
-        value={name}
+        value={name || ""}
       />
       <button
         onClick={async () => {

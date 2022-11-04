@@ -1,4 +1,3 @@
-import { wait } from "../utils/wait"
 import Todo from "./todo"
 
 const getTodos = async () => {
@@ -6,7 +5,6 @@ const getTodos = async () => {
     cache: "no-store",
   })
   const data = await response.json()
-  await wait(1)
   return data
 }
 
@@ -14,7 +12,7 @@ export default async function TodoList() {
   const { data } = await getTodos()
 
   return (
-    <div>
+    <div className="todolist">
       <ul>
         {data.map((todo) => {
           return (
