@@ -1,11 +1,12 @@
-import Loading from "./loading"
+import "../styles/globals.css"
+import styles from "../styles/Todos.module.css"
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <head></head>
-      <body>
-        <h1>Yet another todo app</h1>
+      <body className={styles.container}>
+        <span className={styles.title}>Yet another todo app</span>
         {children}
       </body>
     </html>
