@@ -5,11 +5,16 @@ import { useRouter } from "next/navigation"
 import "../styles/todos.css"
 
 async function create(name, refresh) {
-  await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`, {
-    method: "POST",
-    body: JSON.stringify({ name }),
-  })
-  refresh()
+  // make sure input is not empty
+  if (name) {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/todos`, {
+      method: "POST",
+      body: JSON.stringify({ name }),
+    })
+    refresh()
+  } else {
+    alert("Please enter something")
+  }
 }
 
 export default function AddTodo() {
